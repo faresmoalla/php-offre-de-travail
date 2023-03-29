@@ -6,42 +6,50 @@ use App\Repository\CvsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: CvsRepository::class)]
 class Cvs
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name:"id_cv")]
-    private ?int $id_cv = null;
+    #[ORM\Column()]
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"bio is required")]
     private ?string $bio_cv = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"diplome is required")]
     private ?string $diplome = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"annee is required")]
     private ?int $annee_diplome = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"institut is required")]
     private ?string $institut = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"specialite is required")]
     private ?string $specialite = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"images is required")]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'cvs')]
-    private ?Utilisateurs $id_freelancer = null;
+    #[ORM\Column]
+    private ?int $id_freelancer = null;
 
 
 
 
-    public function getId_cv (): ?int
+
+
+    public function getId (): ?int
     {
-        return $this->id_cv ;
+        return $this->id ;
     }
 
     public function getBioCv(): ?string
@@ -116,15 +124,17 @@ class Cvs
         return $this;
     }
 
-    public function getIdFreelancer(): ?Utilisateurs
+    public function getIdFreelancer(): ?int
     {
         return $this->id_freelancer;
     }
 
-    public function setIdFreelancer(?Utilisateurs $id_freelancer): self
+    public function setIdFreelancer(int $id_freelancer): self
     {
         $this->id_freelancer = $id_freelancer;
 
         return $this;
     }
+
+
 }

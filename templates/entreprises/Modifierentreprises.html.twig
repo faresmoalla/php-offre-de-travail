@@ -1,0 +1,51 @@
+{% extends 'backBaseAdmin.html.twig' %}
+{% block body %}
+
+    <h1 class="h3 mb-2 text-gray-800">Ajouter une entreprise</h1>
+
+    <div class="form-group">
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.adresse	, 'adresse ')  }}
+        {{ form_widget(form.adresse	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'adresse'}} ) }}
+        {{ form_errors(form.adresse ) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.tel_entreprise, ' TelEntreprise')  }}
+
+        {{ form_widget(form.tel_entreprise , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' TelEntreprise'}} ) }}
+        {{ form_errors(form.tel_entreprise) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.description_entreprise, ' DescriptionEntreprise')  }}
+
+        {{ form_widget(form.description_entreprise , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'DescriptionEntreprise'}} ) }}
+        {{ form_errors(form.description_entreprise) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.image, ' image')  }}
+
+        {{ form_widget(form.image , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'image'}} ) }}
+        {{ form_errors(form.image) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.id_representant, ' id_representant')  }}
+
+        {{ form_widget(form.id_representant , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'id_representant'}} ) }}
+        {{ form_errors(form.id_representant) }}
+
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mon PDF personnalisé</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+</head>
+<body>
+
+
+
+<div class="header">
+    <h1>Entreprise: {{ pdf.TitreOffreDeTravail }}</h1>
+</div>
+<div class="header">
+    <h2>Adresse: {{ pdf.EntrepriseOffreDeTravail }}</h2>
+</div>
+<div class="content">
+    <p>TelEntreprise : {{ pdf.TypeOffreDeTravail }}</p>
+</div>
+<div class="content">
+    <p>Salaire : {{ pdf.SalaireOffreDeTravail }}</p>
+</div>
+<div class="content">
+    <p>Specialité : {{ pdf.SpecialiteOffreDeTravail }}</p>
+</div>
+<div class="content">
+    <p>Description : {{ pdf.DescriptionOffreDeTravail }}</p>
+</div>
+
+</body>
+</html>
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        background-color: #008080;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .footer {
+        background-color: #008080;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 12px;
+    }
+</style>

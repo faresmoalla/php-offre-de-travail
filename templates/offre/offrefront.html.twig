@@ -1,0 +1,44 @@
+{% extends 'frontBaseVisiteur.html.twig' %}
+
+{% block body %}
+
+
+        <section id="hotels" class="section-with-bg">
+
+
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+
+    {% for i in tableoffre %}
+        <div class="col-lg-4 col-md-6" >
+            <div class="hotel">
+                <div class="hotel-img"  >
+
+                    <img   src="{{ asset('/images/')}}{{ i.EntrepriseOffreDeTravail.image }}"  alt="Hotel 1" class="img-fluid"   />
+
+                </div>
+                <a href="{{ path('pdf',{'id': i.id}) }}">   <img   width="30" src="https://cdn-icons-png.flaticon.com/512/337/337946.png"> {{ i.TitreOffreDeTravail }} </a>
+                                <div class="stars">
+                    <h4> Type de l'offre : {{ i.TypeOffreDeTravail }} </h4>
+                    <h4> Spécialité : {{ i.SpecialiteOffreDeTravail }} </h4>
+
+                </div>
+                <p>Salaire : {{ i.SalaireOffreDeTravail  }} dt</p>
+                <a class="btn btn-outline-dark mt-auto" href="{{ path('ajoutercv') }}">Postuler</a>
+
+
+
+
+            </div>
+
+        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+{% endblock %}

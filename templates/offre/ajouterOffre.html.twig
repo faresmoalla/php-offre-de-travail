@@ -1,0 +1,58 @@
+{% extends 'backBaseAdmin.html.twig' %}
+{% block body %}
+
+    <h1 class="h3 mb-2 text-gray-800">Ajouter une offre de travail</h1>
+
+    <div class="form-group">
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.titre_offre_de_travail	, 'titre_offre_de_travail ')  }}
+        {{ form_widget(form.titre_offre_de_travail	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'titre_offre_de_travail'}} ) }}
+        {{ form_errors(form.titre_offre_de_travail ) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.type_offre_de_travail, ' type_offre_de_travail')  }}
+
+        {{ form_widget(form.type_offre_de_travail , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' type_offre_de_travail'}} ) }}
+        {{ form_errors(form.type_offre_de_travail) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.salaire_offre_de_travail, ' salaire_offre_de_travail')  }}
+
+        {{ form_widget(form.salaire_offre_de_travail , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'salaire_offre_de_travail'}} ) }}
+        {{ form_errors(form.salaire_offre_de_travail) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.specialite_offre_de_travail, ' specialite_offre_de_travail')  }}
+
+        {{ form_widget(form.specialite_offre_de_travail , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'specialite_offre_de_travail'}} ) }}
+        {{ form_errors(form.specialite_offre_de_travail) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description_offre_de_travail, ' description_offre_de_travail')  }}
+
+        {{ form_widget(form.description_offre_de_travail , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'description_offre_de_travail'}} ) }}
+        {{ form_errors(form.description_offre_de_travail) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.entreprise_offre_de_travail, ' entreprise_offre_de_travail')  }}
+
+        {{ form_widget(form.entreprise_offre_de_travail , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'entreprise_offre_de_travail'}} ) }}
+        {{ form_errors(form.entreprise_offre_de_travail) }}
+
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+
+{% endblock %}

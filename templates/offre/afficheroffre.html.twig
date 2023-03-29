@@ -1,0 +1,79 @@
+{% extends 'backBaseAdmin.html.twig' %}
+{% block body %}
+    <button class="btn btn-success btn-icon-split" ><a href="{{ path('ajouterOffre')  }}"><span class="text" style="color: white">Ajouter </span></a></button>
+
+
+    <br><br>
+    <div>
+        <input  id="myInput"  type="text" placeholder="search">
+        <img src="https://img.icons8.com/color/search"/> </div>
+
+
+
+    <table class="table table-bordered" id="t"  width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Titre</th>
+            <th>Type</th>
+            <th>Salaire</th>
+            <th>Specialite</th>
+            <th>Description</th>
+            <th>Entreprise</th>
+            <th>Modifier </th>
+            <th> Supprimer</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        {% for i in tableoffre %}
+            <tr>
+                <td>             <a href="{{ path('pdf',{'id': i.id}) }}">  <img   width="30" src="https://cdn-icons-png.flaticon.com/512/337/337946.png">  </a>
+                </td>
+                <td>{{ i.TitreOffreDeTravail }}</td>
+                <td>{{ i.TypeOffreDeTravail }}</td>
+                <td>{{ i.SalaireOffreDeTravail }}</td>
+                <td>{{ i.SpecialiteOffreDeTravail }}</td>
+                <td>{{ i.DescriptionOffreDeTravail }}</td>
+                <td>{{ i.EntrepriseOffreDeTravail }}</td>
+
+
+
+                <td>  <a href="{{ path('modifieroffre',{'id': i.id}) }}"  class="btn btn-info btn-icon-split">
+                                            <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+
+                    </span>
+                        <span class="text">Modifier</span>
+
+                    </a></td>
+                <td><a href="{{ path('supprimeroffre',{'id': i.id}) }}"><img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-delete-miscellaneous-kiranshastry-lineal-color-kiranshastry.png" style="width:50px;height:50px;" /></a></td>
+
+            </tr>
+
+        {% endfor %}
+
+
+        </tbody>
+        <tbody id="search">
+        </tbody>
+
+    </table>
+
+    {{ knp_pagination_render(tableoffre) }}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+{% endblock %}

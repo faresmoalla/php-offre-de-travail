@@ -4,36 +4,41 @@ namespace App\Entity;
 
 use App\Repository\OffresDeTravailRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: OffresDeTravailRepository::class)]
 class OffresDeTravail
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name:"id_offre_de_travail")]
-    private ?int $id_offre_de_travail = null;
+    #[ORM\Column()]
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"titre is required")]
     private ?string $titre_offre_de_travail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"type is required")]
     private ?string $type_offre_de_travail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"salaire is required")]
     private ?string $salaire_offre_de_travail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"specialite is required")]
     private ?string $specialite_offre_de_travail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"description is required")]
     private ?string $description_offre_de_travail = null;
 
     #[ORM\ManyToOne(inversedBy: 'offresDeTravails')]
-    private ?Entreprises $entreprise_offre_de_travail = null;
+    private Entreprises $entreprise_offre_de_travail ;
 
-    public function getId_offre_de_travail(): ?int
+    public function getId(): ?int
     {
-        return $this->id_offre_de_travail;
+        return $this->id;
     }
 
     public function getTitreOffreDeTravail(): ?string

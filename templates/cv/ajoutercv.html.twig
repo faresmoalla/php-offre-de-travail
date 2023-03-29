@@ -1,0 +1,70 @@
+{% extends 'frontBaseVisiteur.html.twig' %}
+
+{% block body %}
+
+    <a class="btn btn-outline-dark mt-auto" href="{{ path('afficheroffre2') }}">Retour</a>
+
+
+    <h1 class="h3 mb-2 text-gray-800">Ajouter une Cv</h1>
+
+    <div class="form-group">
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.bio_cv	, 'bio_cv ')  }}
+        {{ form_widget(form.bio_cv	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'bio_cv'}} ) }}
+        {{ form_errors(form.bio_cv ) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.diplome, ' diplome')  }}
+
+        {{ form_widget(form.diplome , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' diplome'}} ) }}
+        {{ form_errors(form.diplome) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.annee_diplome, ' annee_diplome')  }}
+
+        {{ form_widget(form.annee_diplome , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'annee_diplome'}} ) }}
+        {{ form_errors(form.annee_diplome) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.image, ' image')  }}
+
+        {{ form_widget(form.image , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'image'}} ) }}
+        {{ form_errors(form.image) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.institut, ' institut')  }}
+
+        {{ form_widget(form.institut , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'institut'}} ) }}
+        {{ form_errors(form.institut) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.specialite, ' specialite')  }}
+
+        {{ form_widget(form.specialite , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'specialite'}} ) }}
+        {{ form_errors(form.specialite) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.id_freelancer, ' id_freelancer')  }}
+
+        {{ form_widget(form.id_freelancer , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'id_freelancer'}} ) }}
+        {{ form_errors(form.id_freelancer) }}
+
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+
+{% endblock %}

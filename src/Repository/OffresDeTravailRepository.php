@@ -39,6 +39,22 @@ class OffresDeTravailRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     *
+     * Requête QueryBuilder
+     */
+    public function listOffreParEntreprises(){
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.salaire_offre_de_travail','ASC')
+            ->getQuery()
+            ->getResult()
+
+            ;
+
+    }
+
+
+
 //    /**
 //     * @return OffresDeTravail[] Returns an array of OffresDeTravail objects
 //     */

@@ -6,7 +6,7 @@ use App\Repository\EntreprisesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EntreprisesRepository::class)]
 class Entreprises
 {
@@ -15,25 +15,35 @@ class Entreprises
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name:"id_entreprise")]
-    private ?int $id_entreprise = null;
+    #[ORM\Column()]
+    private ?int $id = null;
 
     #[ORM\Column]
     private ?int $id_representant = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"adresse is required")]
     private ?string $adresse = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"tel is required")]
+    #[Assert\Length(
+        min: 8,
+        max: 8,
+        minMessage: 'numero invalide',
+        maxMessage: 'numero invalide',
+    )]
     private ?int $tel_entreprise = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"description is required")]
     private ?string $description_entreprise = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"image is required")]
     private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'entreprise_offre_de_travail', targetEntity: OffresDeTravail::class)]
+    #[ORM\OneToMany(mappedBy: 'entreprise_offre_de_travail', targetEntity: OffresDeTravail::class,orphanRemoval: true)]
     private Collection $offresDeTravails;
 
     public function __construct()
@@ -41,9 +51,9 @@ class Entreprises
         $this->offresDeTravails = new ArrayCollection();
     }
 
-    public function getId_entreprise(): ?int
+    public function getId(): ?int
     {
-        return $this->id_entreprise;
+        return $this->id;
     }
 
     public function getIdRepresentant(): ?int
@@ -134,5 +144,9 @@ class Entreprises
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getAdresse();
     }
 }
